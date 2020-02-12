@@ -43,31 +43,53 @@ let developerSkills = []
 //   console.log(developerSkills)
 // })
 
-const render = function() {
-  const ul = document.querySelector('.wrapper-ul')
+const clickAddSkill = function() {
   const inputField = document.querySelector('.input')
   const textValue = inputField.value
   inputField.value = ''
   developerSkills.push(textValue)
+  render()
   console.log(developerSkills)
-
-  const removeButton = document.createElement('button')
-  removeButton.setAttribute('class', 'remove-btn')
-  removeButton.textContent = 'X'
-  ul.appendChild(removeButton)
-  const li = document.createElement('li')
-  li.setAttribute('class', 'list')
-  li.textContent = textValue
-  ul.appendChild(li)
 }
 
-const button = document.querySelector('.btn')
-button.addEventListener('click', render)
+const render = function() {
+  //   const removeButton = document.createElement('button')
+  //   removeButton.setAttribute('class', 'remove-btn')
+  //   removeButton.textContent = 'X'
+  //   ul.appendChild(removeButton)
+  const ul = document.querySelector('.wrapper-ul')
+  ul.innerHTML = ''
+  developerSkills.forEach(function(skill, i) {
+    const li = document.createElement('li')  
+    li.setAttribute('class', 'li-wrapper')
+    ul.appendChild(li)
+    const removeButton = document.createElement('button')
+    removeButton.setAttribute('class', 'remove-btn')
+    removeButton.textContent = 'X'
+    li.appendChild(removeButton)
 
-const ulWrap = document.querySelector('.wrapper-ul')
-ulWrap.addEventListener('click', function(e) {
-  ulWrap.removeChild(ulWrap.childNodes[0])
-  ulWrap.removeChild(ulWrap.childNodes[0])
-  developerSkills.pop()
-  console.log(developerSkills)
-})
+    const span = document.createElement('span')
+    span.setAttribute('class', 'skill')
+    span.textContent = skill
+    li.appendChild(span)
+
+     removeButton.addEventListener('click', function() {
+         developerSkills.splice(i, 1)
+         console.log(developerSkills)
+         render()
+     })
+  })
+}
+
+
+
+const button = document.querySelector('.btn')
+button.addEventListener('click', clickAddSkill)
+
+// const ulWrap = document.querySelector('.wrapper-ul')
+// ulWrap.addEventListener('click', function(e) {
+//   ulWrap.removeChild(ulWrap.childNodes[0])
+//   ulWrap.removeChild(ulWrap.childNodes[0])
+//   developerSkills.pop()
+//   console.log(developerSkills)
+// })

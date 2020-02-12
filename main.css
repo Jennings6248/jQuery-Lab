@@ -30,7 +30,7 @@
   justify-content: center;
 }
 
-.list {
+.skill {
   color: #fed160;
   display: flex;
   justify-content: center;
@@ -47,8 +47,9 @@
 }
 
 .wrapper-ul {
-  display: table;
-  vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+  
 }
 
 .btn {
@@ -84,6 +85,6 @@
   font-weight: bolder;
 }
 
-.table {
-  vertical-align: middle;
+.li-wrapper {
+    display: flex;
 }
